@@ -1,0 +1,805 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>3.4 服务降级 · txle manual</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="ActionTech">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="3.5_monitoring.html" />
+    
+    
+    <link rel="prev" href="3.3_global_tx/3.3.4_nesting.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../0.Overview/0.0_overview.html">
+            
+                <a href="../0.Overview/0.0_overview.html">
+            
+                    
+                    0.概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    1.快速开始
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../1.QuickStart/1.0_deployment.html">
+            
+                <a href="../1.QuickStart/1.0_deployment.html">
+            
+                    
+                    1.0 常规部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../1.QuickStart/1.1_docker_image_deployment.html">
+            
+                <a href="../1.QuickStart/1.1_docker_image_deployment.html">
+            
+                    
+                    1.1 docker镜像部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../1.QuickStart/1.2_docker_compose_deployment.html">
+            
+                <a href="../1.QuickStart/1.2_docker_compose_deployment.html">
+            
+                    
+                    1.2 常规部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    2.适用场景
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="3.0_core_functions.html">
+            
+                <a href="3.0_core_functions.html">
+            
+                    
+                    3.核心功能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    3.1 服务端
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="3.1_server_function/3.1.0_scheduler.html">
+            
+                <a href="3.1_server_function/3.1.0_scheduler.html">
+            
+                    
+                    3.1.0 定时任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="3.1_server_function/3.1.1_tx_manager.html">
+            
+                <a href="3.1_server_function/3.1.1_tx_manager.html">
+            
+                    
+                    3.1.1 全局事务管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="3.1_server_function/3.1.2_tx_coordinator.html">
+            
+                <a href="3.1_server_function/3.1.2_tx_coordinator.html">
+            
+                    
+                    3.1.2 全局事务协调
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" data-path="3.1_server_function/3.1.4_report_exception.md">
+            
+                <span>
+            
+                    
+                    3.1.3 异常上报
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.5" data-path="3.1_server_function/3.1.5_report_msg.md">
+            
+                <span>
+            
+                    
+                    3.1.4 消息上报
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    3.2 客户端
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="3.2_client_function/3.2.0_biz_interceptor.html">
+            
+                <a href="3.2_client_function/3.2.0_biz_interceptor.html">
+            
+                    
+                    3.2.0 业务拦截
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="3.2_client_function/3.2.1_global_tx_relation.html">
+            
+                <a href="3.2_client_function/3.2.1_global_tx_relation.html">
+            
+                    
+                    3.2.1 全局事务关联
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="3.2_client_function/3.2.2_report_event.html">
+            
+                <a href="3.2_client_function/3.2.2_report_event.html">
+            
+                    
+                    3.2.2 事件上报
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="3.2_client_function/3.2.3_load_balance.html">
+            
+                <a href="3.2_client_function/3.2.3_load_balance.html">
+            
+                    
+                    3.2.3 负载均衡
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" >
+            
+                <span>
+            
+                    
+                    3.3 全局事务
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="3.3_global_tx/3.3.0_compensation.html">
+            
+                <a href="3.3_global_tx/3.3.0_compensation.html">
+            
+                    
+                    3.3.0 手动补偿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="3.3_global_tx/3.3.1_auto_compensation.html">
+            
+                <a href="3.3_global_tx/3.3.1_auto_compensation.html">
+            
+                    
+                    3.3.1 自动回滚
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.3" data-path="3.3_global_tx/3.3.2_retry.html">
+            
+                <a href="3.3_global_tx/3.3.2_retry.html">
+            
+                    
+                    3.3.2 重试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.4" data-path="3.3_global_tx/3.3.3_timeout.html">
+            
+                <a href="3.3_global_tx/3.3.3_timeout.html">
+            
+                    
+                    3.3.3 超时
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.5" data-path="3.3_global_tx/3.3.4_nesting.html">
+            
+                <a href="3.3_global_tx/3.3.4_nesting.html">
+            
+                    
+                    3.3.4 嵌套
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.4" data-path="3.4_downgrading.html">
+            
+                <a href="3.4_downgrading.html">
+            
+                    
+                    3.4 服务降级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="3.5_monitoring.html">
+            
+                <a href="3.5_monitoring.html">
+            
+                    
+                    3.5 监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    4.配置说明
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" >
+            
+                <span>
+            
+                    
+                    4.0 启动前配置
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" >
+            
+                <span>
+            
+                    
+                    4.1运行中配置
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../5.FAQ/5.0_FAQ.html">
+            
+                <a href="../5.FAQ/5.0_FAQ.html">
+            
+                    
+                    5.常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../6.TXLEVSOtherSoftwares/6.0_txle_vs_other_softwares.html">
+            
+                <a href="../6.TXLEVSOtherSoftwares/6.0_txle_vs_other_softwares.html">
+            
+                    
+                    6.产品优势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    7.示例工程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" >
+            
+                <span>
+            
+                    
+                    7.0 Spring Boot示例工程
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" >
+            
+                <span>
+            
+                    
+                    7.1 Spring Cloud示例工程
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" >
+            
+                <span>
+            
+                    
+                    7.2 Dubbo示例工程
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >3.4 服务降级</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x670D;&#x52A1;&#x964D;&#x7EA7;">&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x670D;&#x52A1;&#x964D;&#x7EA7;</h3>
+<ul>
+<li><p>&#x7B80;&#x4ECB;</p>
+<p>&#x5927;&#x90E8;&#x5206;&#x6846;&#x67B6;&#x548C;&#x4E2D;&#x95F4;&#x4EF6;&#x5728;&#x8BBE;&#x8BA1;&#x521D;&#x671F;&#x5747;&#x5E94;&#x8003;&#x8651;&#x540E;&#x7EED;&#x5BF9;&#x4E3B;&#x4E1A;&#x52A1;&#x7684;&#x5F71;&#x54CD;&#x6700;&#x5C0F;&#x5316;&#xFF0C;txle&#x4E25;&#x683C;&#x9075;&#x5B88;&#x8BE5;&#x539F;&#x5219;&#xFF0C;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x964D;&#x7EA7;&#x529F;&#x80FD;&#x3002;
+&#x5728;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x591A;&#x4E2A;&#x9636;&#x6BB5;&#x90FD;&#x53EF;&#x5BF9;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x8FDB;&#x884C;&#x964D;&#x7EA7;&#x6216;&#x534A;&#x964D;&#x7EA7;&#xFF0C;&#x4EE5;&#x53CA;&#x964D;&#x7EA7;&#x540E;&#x7684;&#x6062;&#x590D;&#x529F;&#x80FD;&#xFF0C;&#x8FD9;&#x5728;&#x5F88;&#x5927;&#x610F;&#x4E49;&#x4E0A;&#x4FDD;&#x8BC1;&#x4E86;&#x4E1A;&#x52A1;&#x7684;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;</p>
+</li>
+<li><p>&#x80CC;&#x666F;</p>
+<p><strong>&#x6027;&#x80FD;&#x5F71;&#x54CD;</strong>&#xFF1A;&#x5F53;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x4E25;&#x91CD;&#x5F71;&#x54CD;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x6027;&#x80FD;&#xFF0C;&#x4E14;&#x4E1A;&#x52A1;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x8981;&#x6C42;&#x4E0D;&#x4E25;&#x82DB;&#x65F6;&#xFF0C;&#x53EF;&#x5BF9;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x91C7;&#x53D6;&#x964D;&#x7EA7;&#x5904;&#x7406;&#x3002;</p>
+<p><strong>Bug</strong>&#xFF1A;&#x5F53;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x51FA;&#x73B0;bug&#x65F6;&#xFF0C;&#x672A;&#x80FD;&#x4FDD;&#x8BC1;&#x4E1A;&#x52A1;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#x65F6;&#xFF0C;&#x5982;&#x672A;&#x80FD;&#x53CA;&#x65F6;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#x4E0E;&#x4FEE;&#x590D;&#xFF0C;&#x53EF;&#x5BF9;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x91C7;&#x53D6;&#x964D;&#x7EA7;&#x5904;&#x7406;&#x3002;</p>
+<p><strong>&#x5F02;&#x5E38;</strong>&#xFF1A;&#x5F53;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x65F6;&#xFF0C;&#x4F1A;&#x56DE;&#x6EDA;&#x6240;&#x6DB5;&#x76D6;&#x7684;&#x5B50;&#x4E1A;&#x52A1;&#x529F;&#x80FD;&#xFF0C;&#x5BFC;&#x81F4;&#x4E1A;&#x52A1;&#x65E0;&#x6CD5;&#x6B63;&#x5E38;&#x8FDB;&#x884C;&#xFF0C;&#x53EF;&#x5BF9;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x91C7;&#x53D6;&#x964D;&#x7EA7;&#x5904;&#x7406;&#x3002;</p>
+<p><strong>&#x7279;&#x6B8A;&#x60C5;&#x51B5;</strong>&#xFF1A;&#x9664;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x5916;&#xFF0C;&#x7CFB;&#x7EDF;&#x5185;&#x5176;&#x4ED6;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#xFF0C;&#x5982;&#x76D1;&#x63A7;&#x3001;Kafka&#x96C6;&#x6210;&#x3001;&#x5DEE;&#x9519;&#x5E73;&#x53F0;&#x7B49;&#x529F;&#x80FD;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x964D;&#x7EA7;&#x5904;&#x7406;&#xFF0C;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x90FD;&#x662F;&#x5728;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x4E0D;&#x5F71;&#x54CD;&#x4E1A;&#x52A1;&#x7684;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;</p>
+</li>
+<li><p>&#x914D;&#x7F6E;&#x4E2D;&#x5FC3;&#x6570;&#x636E;&#x8868;</p>
+<p><img src="pic/3.5_config_table.png" alt=""></p>
+<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">IF</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> Config (
+<span class="hljs-keyword">id</span> <span class="hljs-built_in">bigint</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT,
+servicename <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>),
+instanceid <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>),
+<span class="hljs-keyword">type</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">2</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">&apos;1-globaltx, 2-compensation, 3-autocompensation, 4-bizinfotokafka, 5-txmonitor, 6-alert, 7-schedule, 8-globaltxfaulttolerant, 9-compensationfaulttolerant, 10-autocompensationfaulttolerant, 50-accidentreport, 51-sqlmonitor  if values are less than 50, then configs for server, otherwise configs for client.&apos;</span>,
+<span class="hljs-keyword">status</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">&apos;0-normal, 1-historical, 2-dumped&apos;</span>,
+ability <span class="hljs-built_in">int</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">1</span> <span class="hljs-keyword">COMMENT</span> <span class="hljs-string">&apos;0-do not provide ability, 1-provide ability     ps: the client&apos;&apos;s ability inherits the global ability.&apos;</span>,
+<span class="hljs-keyword">value</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+remark <span class="hljs-built_in">varchar</span>(<span class="hljs-number">500</span>),
+updatetime datetime <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span>,
+PRIMARY <span class="hljs-keyword">KEY</span> (<span class="hljs-keyword">id</span>) <span class="hljs-keyword">USING</span> BTREE,
+<span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">INDEX</span> pk_id(<span class="hljs-keyword">id</span>) <span class="hljs-keyword">USING</span> BTREE,
+<span class="hljs-keyword">INDEX</span> index_type(<span class="hljs-keyword">type</span>) <span class="hljs-keyword">USING</span> BTREE
+) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CHARSET</span>=utf8;
+</code></pre>
+</li>
+<li><p>&#x914D;&#x7F6E;&#x7BA1;&#x7406;</p>
+<p>&#x7406;&#x5E94;&#x53C2;&#x8003;&#x914D;&#x7F6E;&#x4E2D;&#x5FC3;&#x76F8;&#x5173;&#x6587;&#x6863;&#xFF08;&#x6682;&#x672A;&#x5F00;&#x53D1;&#xFF09;&#x3002;</p>
+<p>&#x63D0;&#x4F9B;&#x5C55;&#x793A;UI&#xFF0C;&#x8BFB;&#x53D6;&#x914D;&#x7F6E;&#x8868;&#x6570;&#x636E;&#x5E76;&#x5C55;&#x793A;&#x3002;</p>
+<p>&#x6DFB;&#x52A0;&#x65F6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x540D;&#x79F0;&#x548C;&#x5B9E;&#x4F8B;ID&#x4ECE;&#x5168;&#x5C40;&#x4E8B;&#x4EF6;&#x6570;&#x636E;&#x8868;&#x4E2D;&#x8BFB;&#x53D6;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x6570;&#x636E;&#x91CF;&#x4E0D;&#x5927;&#xFF0C;&#x6545;&#x66F4;&#x65B0;&#x65F6;&#x5148;&#x5C06;&#x539F;&#x6570;&#x636E;&#x7F6E;&#x4E3A;&#x5386;&#x53F2;&#x6570;&#x636E;&#xFF0C;&#x518D;&#x63D2;&#x5165;&#x65B0;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x5220;&#x9664;&#x5168;&#x90E8;&#x4E3A;&#x903B;&#x8F91;&#x5220;&#x9664;&#xFF0C;&#x5373;&#x5220;&#x9664;&#x540E;&#x72B6;&#x6001;&#x53D8;&#x4E3A;&#x5386;&#x53F2;&#x6570;&#x636E;&#x3002;</p>
+</li>
+<li><p>&#x964D;&#x7EA7;&#x7C7B;&#x578B;</p>
+<ul>
+<li><p>&#x914D;&#x7F6E;&#x964D;&#x7EA7;</p>
+<p>&#x5373;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x5BF9;&#x90E8;&#x5206;&#x529F;&#x80FD;&#x8FDB;&#x884C;&#x964D;&#x7EA7;&#x5904;&#x7406;&#x4E0E;&#x5426;&#x3002;</p>
+<p>&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x90E8;&#x5206;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x7684;&#x964D;&#x7EA7;&#x914D;&#x7F6E;&#xFF0C;&#x5F53;&#x529F;&#x80FD;&#x5BF9;&#x5E94;&#x7684;&#x914D;&#x7F6E;&#x503C;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;disabled&#x65F6;&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x6B64;&#x529F;&#x80FD;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;&#x964D;&#x7EA7;&#x5904;&#x7406;&#xFF0C;&#x5373;&#x7A0B;&#x5E8F;&#x6682;&#x505C;&#x63D0;&#x4F9B;&#x6B64;&#x529F;&#x80FD;&#x76F4;&#x81F3;&#x89E3;&#x9664;&#x964D;&#x7EA7;&#x3002;&#x82E5;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x4E00;&#x5207;&#x6B63;&#x5E38;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x914D;&#x7F6E;&#x503C;&#x4E3A;enabled&#x89E3;&#x9664;&#x964D;&#x7EA7;&#x3002;</p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x964D;&#x7EA7;&#x914D;&#x7F6E;&#x503C;&#x4E0D;&#x4EC5;&#x4EC5;&#x5305;&#x542B;disabled&#xFF0C;&#x540E;&#x7EED;&#x4F1A;&#x589E;&#x8BBE;&#x5176;&#x5B83;&#x503C;&#xFF0C;&#x5982;&#x8303;&#x56F4;&#x503C;&#x7B49;&#x3002;</p>
+</li>
+<li><p>&#x5BB9;&#x9519;&#x964D;&#x7EA7;</p>
+<p>&#x5373;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x7CFB;&#x7EDF;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D1;&#x751F;&#x5F02;&#x5E38;&#x65F6;&#xFF0C;&#x4E3A;&#x4E0D;&#x5F71;&#x54CD;&#x4E1A;&#x52A1;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF0C;&#x5C06;&#x5F53;&#x524D;&#x5F02;&#x5E38;&#x6355;&#x83B7;&#x6389;&#xFF0C;&#x4E0D;&#x56DE;&#x6EDA;&#x5B50;&#x4E1A;&#x52A1;&#x5DF2;&#x63D0;&#x4EA4;&#x7684;&#x4E8B;&#x52A1;&#x3002;</p>
+<p>&#x5BB9;&#x9519;&#x964D;&#x7EA7;&#x4E5F;&#x652F;&#x6301;&#x914D;&#x7F6E;&#xFF0C;&#x5373;&#x5982;&#x679C;&#x542F;&#x7528;&#x4E86;&#x76F8;&#x5E94;&#x529F;&#x80FD;&#x7684;&#x5BB9;&#x9519;&#x964D;&#x7EA7;&#x624D;&#x4F1A;&#x5BF9;&#x5F02;&#x5E38;&#x8FDB;&#x884C;&#x6355;&#x83B7;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x964D;&#x7EA7;&#x914D;&#x7F6E;</p>
+<p><strong>&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x964D;&#x7EA7;&#x914D;&#x7F6E;</strong>&#xFF1A;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x3001;&#x624B;&#x52A8;&#x8865;&#x507F;&#x3001;&#x81EA;&#x52A8;&#x8865;&#x507F;&#x3001;Kafka&#x96C6;&#x6210;&#x3001;&#x4E8B;&#x52A1;&#x76D1;&#x63A7;&#x3001;&#x544A;&#x8B66;&#x3001;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<p><strong>&#x5BB9;&#x9519;&#x964D;&#x7EA7;&#x914D;&#x7F6E;</strong>&#xFF1A;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x5BB9;&#x9519;&#x3001;&#x624B;&#x52A8;&#x8865;&#x507F;&#x5BB9;&#x9519;&#x3001;&#x81EA;&#x52A8;&#x8865;&#x507F;&#x5BB9;&#x9519;&#x3002;</p>
+<p><strong>&#x5BA2;&#x6237;&#x7AEF;&#x964D;&#x7EA7;&#x914D;&#x7F6E;</strong>&#xFF1A;&#x4E0A;&#x62A5;&#x5DEE;&#x9519;&#x3001;SQL&#x76D1;&#x63A7;&#x3002;</p>
+<p>ps&#xFF1A;&#x964D;&#x7EA7;&#x662F;&#x6982;&#x5FF5;&#x4E0A;&#x7684;&#xFF0C;&#x800C;&#x771F;&#x5B9E;&#x7684;&#x7CFB;&#x7EDF;&#x914D;&#x7F6E;&#x662F;&#x9488;&#x5BF9;&#x5B9E;&#x9645;&#x7684;&#x529F;&#x80FD;&#x5341;&#x5206;&#x652F;&#x6301;&#x3002;<br>&#x5982;&#x9488;&#x5BF9;&#x964D;&#x7EA7;&#x914D;&#x7F6E;&#xFF0C;&#x5F00;&#x542F;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#xFF0C;&#x610F;&#x601D;&#x662F;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#xFF0C;&#x5173;&#x95ED;&#x5219;&#x662F;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x4E0D;&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#xFF1B;<br>&#x5982;&#x9488;&#x5BF9;&#x5BB9;&#x9519;&#x964D;&#x7EA7;&#xFF0C;&#x5F00;&#x542F;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x662F;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x5C06;&#x8FDB;&#x884C;&#x5BB9;&#x9519;&#xFF0C;&#x5373;&#x4E0D;&#x5BF9;&#x5B50;&#x4E8B;&#x52A1;&#x8FDB;&#x884C;&#x56DE;&#x6EDA;&#xFF0C;&#x5173;&#x95ED;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x53D1;&#x9001;&#x9519;&#x8BEF;&#xFF0C;&#x5219;&#x4F1A;&#x5BF9;&#x5B50;&#x4E8B;&#x52A1;&#x8FDB;&#x884C;&#x56DE;&#x6EDA;&#x64CD;&#x4F5C;&#xFF1B;</p>
+<p><img src="pic/3.4_degradation_config.png" alt=""></p>
+<p><strong>&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#xFF1A;</strong></p>
+<p>  &#x5728;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x542F;&#x52A8;&#x524D;&#x4F1A;&#x5148;&#x68C0;&#x6D4B;&#x662F;&#x5426;&#x542F;&#x7528;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x914D;&#x7F6E;&#xFF0C;&#x5982;&#x914D;&#x7F6E;&#x503C;&#x4E3A;disabled&#x5219;&#x4E0D;&#x542F;&#x52A8;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#xFF0C;&#x76F4;&#x63A5;&#x6267;&#x884C;&#x4E1A;&#x52A1;&#x3002;<br>  &#x6BCF;&#x4E2A;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x542F;&#x52A8;&#x524D;&#x90FD;&#x4F1A;&#x68C0;&#x67E5;&#xFF0C;&#x4EE5;&#x8FBE;&#x5230;&#x964D;&#x7EA7;&#x914D;&#x7F6E;&#x5B9E;&#x65F6;&#x751F;&#x6548;&#x3002;&#x5DF2;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x4E0D;&#x53D7;&#x5F71;&#x54CD;&#x3002;</p>
+<p><strong>&#x624B;&#x52A8;&#x8865;&#x507F;&#xFF1A;</strong> &#x540C;&#x4E0A;&#x3002;&#x5728;&#x542F;&#x52A8;&#x5B50;&#x4E8B;&#x52A1;&#x524D;&#x68C0;&#x6D4B;&#x3002;</p>
+<p><strong>&#x81EA;&#x52A8;&#x8865;&#x507F;&#xFF1A;</strong> &#x540C;&#x4E0A;&#x3002;</p>
+<p><strong>Kafka&#x96C6;&#x6210;&#xFF1A;</strong> &#x540C;&#x4E0A;&#x3002;&#x5728;&#x53D1;&#x9001;Kafka&#x6D88;&#x606F;&#x524D;&#x68C0;&#x6D4B;&#x3002;</p>
+<p><strong>&#x4E8B;&#x52A1;&#x76D1;&#x63A7;&#xFF1A;</strong> &#x5728;&#x542F;&#x7528;&#x76D1;&#x63A7;&#x524D;&#x68C0;&#x6D4B;&#x3002;</p>
+<p><strong>&#x544A;&#x8B66;&#xFF1A;</strong> &#x6682;&#x672A;&#x5F00;&#x53D1;&#xFF0C;&#x53EF;&#x5728;Prometheus&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x542F;&#x7528;/&#x7981;&#x7528;&#x3002;</p>
+<p><strong>&#x5B9A;&#x65F6;&#x5668;&#xFF1A;</strong> &#x6682;&#x672A;&#x5F00;&#x53D1;&#xFF0C;&#x76EE;&#x524D;&#x5DF2;&#x6709;&#x5B9A;&#x65F6;&#x5668;&#x5747;&#x9488;&#x5BF9;&#x6240;&#x6709;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x6545;&#x4E0D;&#x4FBF;&#x4E8E;&#x964D;&#x7EA7;&#x3002;</p>
+<p><strong>&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x5BB9;&#x9519;&#xFF1A;</strong> &#x5728;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x542F;&#x52A8;&#x81F3;&#x7ED3;&#x675F;&#x4EE3;&#x7801;&#x5904;&#x7684;&#x5F02;&#x5E38;&#x6355;&#x83B7;&#x4E2D;&#x589E;&#x8BBE;&#x5BB9;&#x9519;&#x964D;&#x7EA7;&#x529F;&#x80FD;&#xFF0C;&#x4F9D;&#x636E;&#x662F;&#x5426;&#x542F;&#x7528;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x5BB9;&#x9519;&#x964D;&#x7EA7;&#x914D;&#x7F6E;&#x8FDB;&#x884C;&#x5BB9;&#x9519;&#x964D;&#x7EA7;&#x5904;&#x7406;&#x3002;</p>
+<p><strong>&#x624B;&#x52A8;&#x8865;&#x507F;&#x5BB9;&#x9519;&#xFF1A;</strong> &#x540C;&#x4E0A;&#x3002;&#x5728;&#x624B;&#x52A8;&#x8865;&#x507F;&#x5BF9;&#x5E94;&#x7684;&#x5B50;&#x4E8B;&#x52A1;&#x4EE3;&#x7801;&#x5904;&#x3002;</p>
+<p><strong>&#x81EA;&#x52A8;&#x8865;&#x507F;&#x5BB9;&#x9519;&#xFF1A;</strong> &#x540C;&#x4E0A;&#x3002;&#x5728;&#x81EA;&#x52A8;&#x8865;&#x507F;&#x5BF9;&#x5E94;&#x7684;&#x5B50;&#x4E8B;&#x52A1;&#x4EE3;&#x7801;&#x5904;&#x3002;</p>
+<p><strong>&#x4E0A;&#x62A5;&#x5DEE;&#x9519;&#xFF1A;</strong> &#x53D1;&#x751F;&#x6D88;&#x606F;&#x5230;&#x5DEE;&#x9519;&#x5E73;&#x53F0;&#x524D;&#x68C0;&#x6D4B;&#xFF0C;&#x4F9D;&#x636E;&#x8BE5;&#x529F;&#x80FD;&#x7684;&#x964D;&#x7EA7;&#x914D;&#x7F6E;&#x503C;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x7EE7;&#x7EED;&#x4E0A;&#x62A5;&#x3002;</p>
+<p><strong>SQL&#x76D1;&#x63A7;&#xFF1A;</strong> &#x5BA2;&#x6237;&#x7AEF;&#x4E1A;&#x52A1;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x5F00;&#x542F;&#x5168;&#x5C40;&#x4E8B;&#x7269;&#x5219;&#x5728;&#x624B;&#x52A8;&#x8865;&#x507F;&#x6216;&#x81EA;&#x52A8;&#x8865;&#x507F;&#x5B50;&#x4E8B;&#x52A1;&#x542F;&#x52A8;&#x524D;&#x68C0;&#x6D4B;&#x5F53;&#x524D;&#x914D;&#x7F6E;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x672A;&#x5F00;&#x542F;&#x5168;&#x5C40;&#x4E8B;&#x7269;&#x5219;&#x5728;&#x4E1A;&#x52A1;&#x6267;&#x884C;&#x524D;&#x68C0;&#x6D4B;&#x3002;</p>
+</li>
+<li><p>&#x964D;&#x7EA7;&#x903B;&#x8F91;</p>
+<p>&#x7CFB;&#x7EDF;&#x9488;&#x5BF9;&#x90E8;&#x5206;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x63D0;&#x4F9B;&#x964D;&#x7EA7;&#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x9664;&#x5BB9;&#x9519;&#x964D;&#x7EA7;&#x914D;&#x7F6E;&#x4E3A;disabled&#xFF0C;&#x5176;&#x5B83;&#x964D;&#x7EA7;&#x914D;&#x7F6E;&#x503C;&#x5747;&#x4E3A;enabled&#x3002;</p>
+<p>&#x6BCF;&#x9879;&#x914D;&#x7F6E;&#x90FD;&#x5206;&#x4E3A;&#x5168;&#x5C40;&#x914D;&#x7F6E;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x914D;&#x7F6E;&#xFF0C;&#x5168;&#x5C40;&#x914D;&#x7F6E;&#x63D0;&#x4F9B;&#x662F;&#x5426;&#x652F;&#x6301;&#x67D0;&#x529F;&#x80FD;&#x3002;&#x82E5;&#x4E0D;&#x652F;&#x6301;&#xFF0C;&#x5219;&#x91C7;&#x7528;&#x5168;&#x5C40;&#x9ED8;&#x8BA4;&#x503C;&#xFF1B;&#x82E5;&#x652F;&#x6301;&#xFF0C;&#x4F18;&#x5148;&#x5BA2;&#x6237;&#x7AEF;&#x914D;&#x7F6E;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x672A;&#x914D;&#x7F6E;&#x5219;&#x91C7;&#x7528;&#x5168;&#x5C40;&#x9ED8;&#x8BA4;&#x503C;&#xFF1B;&#x79C1;&#x6709;&#x914D;&#x7F6E;&#x503C;&#x4E0D;&#x80FD;&#x8D85;&#x51FA;&#x5168;&#x5C40;&#x914D;&#x7F6E;&#x503C;&#x8303;&#x56F4;&#x3002;</p>
+<p>&#x76F8;&#x5173;&#x529F;&#x80FD;&#x6267;&#x884C;&#x524D;&#xFF0C;&#x4F9D;&#x636E;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x964D;&#x7EA7;&#x914D;&#x7F6E;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x8BE5;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x964D;&#x7EA7;&#x9700;&#x6C42;&#x5F80;&#x5F80;&#x90FD;&#x6BD4;&#x8F83;&#x6025;&#x8FEB;&#xFF0C;&#x6545;&#x6240;&#x6709;&#x914D;&#x7F6E;&#x5747;&#x63D0;&#x4F9B;&#x5B9E;&#x65F6;&#x751F;&#x6548;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x5404;&#x914D;&#x7F6E;&#x68C0;&#x6D4B;&#x65F6;&#x673A;&#x4E0D;&#x540C;&#xFF0C;&#x53C2;&#x8003;&#x8BBE;&#x8BA1;&#x539F;&#x5219;&#x662F;&#x201C;&#x4FDD;&#x8BC1;&#x5B9E;&#x65F6;&#x5931;&#x6548;&#xFF0C;&#x8282;&#x7701;&#x6027;&#x80FD;&#x201D;&#x3002;</p>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="3.3_global_tx/3.3.4_nesting.html" class="navigation navigation-prev " aria-label="Previous page: 3.3.4 嵌套">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="3.5_monitoring.html" class="navigation navigation-next " aria-label="Next page: 3.5 监控">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"3.4 服务降级","level":"1.5.4","depth":2,"next":{"title":"3.5 监控","level":"1.5.5","depth":2,"path":"3.CoreFunctions/3.5_monitoring.md","ref":"3.CoreFunctions/3.5_monitoring.md","articles":[]},"previous":{"title":"3.3.4 嵌套","level":"1.5.3.5","depth":3,"path":"3.CoreFunctions/3.3_global_tx/3.3.4_nesting.md","ref":"3.CoreFunctions/3.3_global_tx/3.3.4_nesting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters"],"styles":{"website":"website.css"},"pluginsConfig":{"fontsettings":{"theme":"sepia","family":"sans","size":2},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"ActionTech","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"txle manual","gitbook":"*"},"file":{"path":"3.CoreFunctions/3.4_downgrading.md","mtime":"2019-09-18T06:21:41.107Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-18T10:18:31.324Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
