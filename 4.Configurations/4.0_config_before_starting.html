@@ -638,7 +638,109 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="40-&#x914D;&#x7F6E;&#x6587;&#x4EF6;">4.0 &#x914D;&#x7F6E;&#x6587;&#x4EF6;</h1>
+<h2 id="401-txle&#x670D;&#x52A1;&#x7AEF;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">4.0.1 txle&#x670D;&#x52A1;&#x7AEF;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2>
+<h3 id="4011-applicationyaml&#x4E3B;&#x8981;&#x53C2;&#x6570;&#x8BF4;&#x660E;">4.0.1.1 application.yaml&#x4E3B;&#x8981;&#x53C2;&#x6570;&#x8BF4;&#x660E;</h3>
+<table>
+<tr>
+<th>&#x914D;&#x7F6E;&#x540D;&#x79F0;</th>
+<th>&#x914D;&#x7F6E;&#x5185;&#x5BB9;</th>
+<th>&#x9ED8;&#x8BA4;&#x503C;</th>
+</tr>
+<tr>
+<td>server.port</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x63D0;&#x4F9B;UI&#x670D;&#x52A1;&#x7684;&#x8BBF;&#x95EE;&#x7AEF;&#x53E3;</td>
+<td>8090</td>
+</tr>
+<tr>
+<td>alpha.server.host</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x63D0;&#x4F9B;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x4E00;&#x81F4;&#x6027;&#x670D;&#x52A1;&#x7684;&#x7ED1;&#x5B9A;&#x5730;&#x5740;</td>
+<td>0.0.0.0</td>
+</tr>
+<tr>
+<td>alpha.server.port</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x63D0;&#x4F9B;&#x5168;&#x5C40;&#x4E8B;&#x52A1;&#x4E00;&#x81F4;&#x6027;&#x670D;&#x52A1;&#x7684;&#x8BBF;&#x95EE;&#x7AEF;&#x53E3;</td>
+<td>8080</td>
+</tr>
+<tr>
+<td>spring.datasource.url</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x5730;&#x5740;</td>
+<td>jdbc:mysql://127.0.0.1:3306/txle?characterEncoding=utf-8</td>
+</tr>
+<tr>
+<td>spring.datasource.username</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x7528;&#x6237;&#x540D;</td>
+<td>root</td>
+</tr>
+<tr>
+<td>spring.datasource.password</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x5BC6;&#x7801;</td>
+<td>123456</td>
+</tr>
+<tr>
+<td>spring.zipkin.base-url</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#xFF0C;&#x914D;&#x5408;zipkin server&#x4E00;&#x8D77;&#x4F7F;&#x7528;</td>
+<td>http://127.0.0.1:9411/api/v2/spans</td>
+</tr>
+<tr>
+<td>spring.cloud.consul.enabled</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x542F;&#x52A8;consul&#x9009;&#x4E3B;</td>
+<td>true</td>
+</tr>
+<tr>
+<td>spring.cloud.consul.host</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x542F;&#x52A8;consul&#x9009;&#x4E3B;&#x65F6;consul&#x7684;&#x8BBF;&#x95EE;&#x5730;&#x5740;</td>
+<td>127.0.0.1</td>
+</tr>
+<tr>
+<td>spring.cloud.consul.port</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x542F;&#x52A8;consul&#x9009;&#x4E3B;&#x65F6;consul&#x7684;&#x8BBF;&#x95EE;&#x7AEF;&#x53E3;</td>
+<td>8500</td>
+</tr>
+<tr>
+<td>txle.prometheus.metrics.port</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x63D0;&#x4F9B;&#x7684;Prometheus&#x83B7;&#x53D6;&#x5143;&#x6570;&#x636E;&#x7AEF;&#x53E3;</td>
+<td>8099</td>
+</tr>
+</table>
+
+<h3 id="4012-kafkaproperties&#x4E3B;&#x8981;&#x53C2;&#x6570;&#x8BF4;&#x660E;">4.0.1.2 kafka.properties&#x4E3B;&#x8981;&#x53C2;&#x6570;&#x8BF4;&#x660E;</h3>
+<table>
+<tr>
+<th>&#x914D;&#x7F6E;&#x540D;&#x79F0;</th>
+<th>&#x914D;&#x7F6E;&#x5185;&#x5BB9;</th>
+<th>&#x9ED8;&#x8BA4;&#x503C;</th>
+</tr>
+<tr>
+<td>bootstrap.servers</td>
+<td>txle&#x670D;&#x52A1;&#x7AEF;&#x4F7F;&#x7528;&#x7684;kafka&#x96C6;&#x7FA4;&#x7684;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#xFF0C;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x7AEF;&#x4F7F;&#x7528;&#x9017;&#x53F7;&#x5206;&#x9694;</td>
+<td>kafka1:9092,kafka2:9092,kafka3:9092</td>
+</tr>
+</table>
+
+<h2 id="402-txle&#x4E1A;&#x52A1;&#x7AEF;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">4.0.2 txle&#x4E1A;&#x52A1;&#x7AEF;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2>
+<table>
+<tr>
+<th>&#x914D;&#x7F6E;&#x540D;&#x79F0;</th>
+<th>&#x914D;&#x7F6E;&#x5185;&#x5BB9;</th>
+<th>&#x9ED8;&#x8BA4;&#x503C;</th>
+</tr>
+<tr>
+<td>alpha.cluster.address</td>
+<td>&#x6240;&#x4F7F;&#x7528;&#x7684;&#x7684;txle&#x670D;&#x52A1;&#x7AEF;&#x63D0;&#x4F9B;&#x7684;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#xFF0C;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x7AEF;&#x4F7F;&#x7528;&#x9017;&#x53F7;&#x5206;&#x9694;</td>
+<td>127.0.0.1:8080</td>
+</tr>
+<tr>
+<td>txle.prometheus.metrics.port</td>
+<td>txle&#x4E1A;&#x52A1;&#x7AEF;&#x63D0;&#x4F9B;&#x7684;Prometheus&#x83B7;&#x53D6;&#x5143;&#x6570;&#x636E;&#x7AEF;&#x53E3;</td>
+<td></td>
+</tr>
+<tr>
+<td>spring.zipkin.base-url</td>
+<td>txle&#x4E1A;&#x52A1;&#x7AEF;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#xFF0C;&#x914D;&#x5408;zipkin server&#x4E00;&#x8D77;&#x4F7F;&#x7528;</td>
+<td>http://127.0.0.1:9411/api/v2/spans</td>
+</tr>
+</table>
                                 
                                 </section>
                             
@@ -677,7 +779,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.0 启动前配置","level":"1.6.1","depth":2,"next":{"title":"4.1运行中配置","level":"1.6.2","depth":2,"path":"4.Configurations/4.1_config_in_running.md","ref":"4.Configurations/4.1_config_in_running.md","articles":[]},"previous":{"title":"4.配置说明","level":"1.6","depth":1,"ref":"","articles":[{"title":"4.0 启动前配置","level":"1.6.1","depth":2,"path":"4.Configurations/4.0_config_before_starting.md","ref":"4.Configurations/4.0_config_before_starting.md","articles":[]},{"title":"4.1运行中配置","level":"1.6.2","depth":2,"path":"4.Configurations/4.1_config_in_running.md","ref":"4.Configurations/4.1_config_in_running.md","articles":[]}]},"dir":"neutral"},"config":{"plugins":["expandable-chapters"],"styles":{"website":"website.css"},"pluginsConfig":{"fontsettings":{"theme":"sepia","family":"sans","size":2},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"ActionTech","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"txle manual","gitbook":"*"},"file":{"path":"4.Configurations/4.0_config_before_starting.md","mtime":"2019-09-18T11:14:13.787Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-18T11:19:10.844Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.0 启动前配置","level":"1.6.1","depth":2,"next":{"title":"4.1运行中配置","level":"1.6.2","depth":2,"path":"4.Configurations/4.1_config_in_running.md","ref":"4.Configurations/4.1_config_in_running.md","articles":[]},"previous":{"title":"4.配置说明","level":"1.6","depth":1,"ref":"","articles":[{"title":"4.0 启动前配置","level":"1.6.1","depth":2,"path":"4.Configurations/4.0_config_before_starting.md","ref":"4.Configurations/4.0_config_before_starting.md","articles":[]},{"title":"4.1运行中配置","level":"1.6.2","depth":2,"path":"4.Configurations/4.1_config_in_running.md","ref":"4.Configurations/4.1_config_in_running.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters"],"styles":{"website":"website.css"},"pluginsConfig":{"fontsettings":{"theme":"sepia","family":"sans","size":2},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"ActionTech","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"txle manual","gitbook":"*"},"file":{"path":"4.Configurations/4.0_config_before_starting.md","mtime":"2019-10-16T05:42:01.399Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-16T05:42:37.350Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
