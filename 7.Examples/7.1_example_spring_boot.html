@@ -660,8 +660,8 @@
 </ul>
 <h2 id="713-&#x8FD0;&#x884C;&#x793A;&#x4F8B;">7.1.3 &#x8FD0;&#x884C;&#x793A;&#x4F8B;</h2>
 <ol>
-<li>&#x53C2;&#x7167;<a href="../1.QuickStart/1.1_deployment.html">1.1_deployment.md</a>&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x5B89;&#x88C5;&#x90E8;&#x7F72;txle sever</li>
-<li><p>&#x8FD0;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x521B;&#x5EFA;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x6240;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x5E93;</p>
+<li>&#x53C2;&#x7167;<a href="../1.QuickStart/1.1_deployment.html">1.1_deployment.md</a>&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x5B89;&#x88C5;&#x90E8;&#x7F72;txle server  </li>
+<li><p>&#x8FD0;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x521B;&#x5EFA;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x6240;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x5E93;  </p>
 <pre><code class="lang-bash">$ docker <span class="hljs-built_in">exec</span> -it backend-mysql bash
 <span class="hljs-comment"># mysql -uroot -p123456</span>
 mysql&gt; create database db1;
@@ -674,7 +674,7 @@ mysql&gt; create database db3;
 Query OK, 1 row affected (0.00 sec)
 </code></pre>
 <ol>
-<li>&#x8FD0;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x7F16;&#x8BD1;&#x6253;&#x5305;&#x4E1A;&#x52A1;&#x7AEF;&#x4EE3;&#x7801;<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> sample-txle-springboot-global &amp;&amp; \
+<li>&#x8FD0;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x7F16;&#x8BD1;&#x6253;&#x5305;&#x4E1A;&#x52A1;&#x7AEF;&#x4EE3;&#x7801;  <pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> sample-txle-springboot-global &amp;&amp; \
 mvn clean package -DskipTests &amp;&amp; \
 <span class="hljs-built_in">cd</span> ../sample-txle-springboot-transfer &amp;&amp;  \
 mvn clean package -DskipTests &amp;&amp;  \
@@ -685,16 +685,16 @@ mvn clean package -DskipTests
 </code></pre>
 </li>
 <li>&#x8FD0;&#x884C;&#x4E1A;&#x52A1;&#x7AEF;&#x4EE3;&#x7801;</li>
-<li>&#x8FD0;&#x884C;global&#x670D;&#x52A1;&#x3002;&#x6253;&#x5305;&#x597D;&#x7684;jar&#x5728;<code>sample-txle-springboot-global/target/</code><pre><code class="lang-bash"> $ java -Dserver.port=8080 -Dalpha.cluster.address=<span class="hljs-variable">${alpha_address}</span>:8080 -jar sample-txle-springboot-global-0.0.1-SNAPSHOT.jar
+<li>&#x8FD0;&#x884C;global&#x670D;&#x52A1;&#x3002;&#x6253;&#x5305;&#x597D;&#x7684;jar&#x5728;<code>sample-txle-springboot-global/target/</code>  <pre><code class="lang-bash"> $ java -Dserver.port=8080 -Dalpha.cluster.address=<span class="hljs-variable">${alpha_address}</span>:8080 -jar sample-txle-springboot-global-0.0.1-SNAPSHOT.jar
 </code></pre>
 </li>
-<li>&#x8FD0;&#x884C;transfer&#x670D;&#x52A1;&#x3002;&#x6253;&#x5305;&#x597D;&#x7684;jar&#x5728;<code>sample-txle-springboot-transfer/target/</code><pre><code class="lang-bash"> $ java -Dserver.port=8080 -Dalpha.cluster.address=<span class="hljs-variable">${alpha_address}</span>:8080 -jar sample-txle-springboot-transfer-0.0.1-SNAPSHOT.jar
+<li>&#x8FD0;&#x884C;transfer&#x670D;&#x52A1;&#x3002;&#x6253;&#x5305;&#x597D;&#x7684;jar&#x5728;<code>sample-txle-springboot-transfer/target/</code>  <pre><code class="lang-bash"> $ java -Dserver.port=8080 -Dalpha.cluster.address=<span class="hljs-variable">${alpha_address}</span>:8080 -jar sample-txle-springboot-transfer-0.0.1-SNAPSHOT.jar
 </code></pre>
 </li>
-<li>&#x8FD0;&#x884C;user&#x670D;&#x52A1;&#x3002;&#x6253;&#x5305;&#x597D;&#x7684;jar&#x5728;<code>sample-txle-springboot-user/target/</code><pre><code class="lang-bash"> $ java -Dserver.port=8080 -Dalpha.cluster.address=<span class="hljs-variable">${alpha_address}</span>:8080 -jar sample-txle-springboot-user-0.0.1-SNAPSHOT.jar
+<li>&#x8FD0;&#x884C;user&#x670D;&#x52A1;&#x3002;&#x6253;&#x5305;&#x597D;&#x7684;jar&#x5728;<code>sample-txle-springboot-user/target/</code>  <pre><code class="lang-bash"> $ java -Dserver.port=8080 -Dalpha.cluster.address=<span class="hljs-variable">${alpha_address}</span>:8080 -jar sample-txle-springboot-user-0.0.1-SNAPSHOT.jar
 </code></pre>
 </li>
-<li>&#x8FD0;&#x884C;merchant&#x670D;&#x52A1;&#x3002;&#x6253;&#x5305;&#x597D;&#x7684;jar&#x5728;<code>sample-txle-springboot-merchant/target/</code><pre><code class="lang-bash"> $ java -Dserver.port=8080 -Dalpha.cluster.address=<span class="hljs-variable">${alpha_address}</span>:8080 -jar sample-txle-springboot-merchant-0.0.1-SNAPSHOT.jar
+<li>&#x8FD0;&#x884C;merchant&#x670D;&#x52A1;&#x3002;&#x6253;&#x5305;&#x597D;&#x7684;jar&#x5728;<code>sample-txle-springboot-merchant/target/</code>  <pre><code class="lang-bash"> $ java -Dserver.port=8080 -Dalpha.cluster.address=<span class="hljs-variable">${alpha_address}</span>:8080 -jar sample-txle-springboot-merchant-0.0.1-SNAPSHOT.jar
 </code></pre>
 </li>
 </ol>
@@ -702,11 +702,11 @@ mvn clean package -DskipTests
 </ol>
 <h2 id="714-&#x4F7F;&#x7528;&#x5DE5;&#x5177;&#x53D1;&#x8D77;&#x5168;&#x5C40;&#x4E8B;&#x52A1;">7.1.4 &#x4F7F;&#x7528;&#x5DE5;&#x5177;&#x53D1;&#x8D77;&#x5168;&#x5C40;&#x4E8B;&#x52A1;</h2>
 <ol>
-<li>&#x53D1;&#x8D77;&#x8F6C;&#x8D26;1&#x5143;&#xFF0C;&#x8F6C;&#x8D26;&#x5C06;&#x4F1A;&#x6210;&#x529F;<pre><code class="lang-bash"> $ curl http://<span class="hljs-variable">${host_address}</span>:8000/<span class="hljs-built_in">test</span>GlobalTransaction/1/1/1
+<li>&#x53D1;&#x8D77;&#x8F6C;&#x8D26;1&#x5143;&#xFF0C;&#x8F6C;&#x8D26;&#x5C06;&#x4F1A;&#x6210;&#x529F;  <pre><code class="lang-bash"> $ curl http://<span class="hljs-variable">${host_address}</span>:8000/<span class="hljs-built_in">test</span>GlobalTransaction/1/1/1
  $ ok
 </code></pre>
 </li>
-<li><p>&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5E93;&#x67E5;&#x770B;&#x8D26;&#x6237;&#x4F59;&#x989D;</p>
+<li><p>&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5E93;&#x67E5;&#x770B;&#x8D26;&#x6237;&#x4F59;&#x989D;  </p>
 <pre><code class="lang-bash"> $ docker <span class="hljs-built_in">exec</span> -it backend-mysql bash
  <span class="hljs-comment"># mysql -uroot -p123456</span>
  mysql&gt; mysql&gt; select * 1.txle_sample_transfer;
@@ -735,11 +735,11 @@ mvn clean package -DskipTests
 </code></pre>
 <p>   <code>txle_sample_transfer</code>&#x8BB0;&#x5F55;&#x4E86;&#x4E00;&#x6761;&#x4EA4;&#x6613;&#x6210;&#x529F;&#x7684;&#x8BB0;&#x5F55;&#xFF0C;<code>txle_sample_user</code>&#x548C;<code>txle_sample_merchant</code>&#x6570;&#x636E;&#x6B63;&#x5E38;&#x8BB0;&#x5F55;</p>
 </li>
-<li>&#x53D1;&#x8D77;&#x8F6C;&#x8D26;2&#x5143;&#xFF0C;&#x8F6C;&#x8D26;&#x5C06;&#x4F1A;&#x5931;&#x8D25;<pre><code class="lang-bash"> $ curl http://<span class="hljs-variable">${host_address}</span>:8000/<span class="hljs-built_in">test</span>GlobalTransaction/1/2/1
+<li>&#x6839;&#x636E;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x91CC;&#x7684;&#x8BBE;&#x5B9A;&#x53D1;&#x8D77;&#x8F6C;&#x8D26;2&#x5143;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B50;&#x670D;&#x52A1;merchant&#x4F1A;&#x62A5;&#x9519;&#x5BFC;&#x81F4;&#x8F6C;&#x8D26;&#x5C06;&#x4F1A;&#x5931;&#x8D25;  <pre><code class="lang-bash"> $ curl http://<span class="hljs-variable">${host_address}</span>:8000/<span class="hljs-built_in">test</span>GlobalTransaction/1/2/1
  $ {<span class="hljs-string">&quot;timestamp&quot;</span>:1570696963401,<span class="hljs-string">&quot;status&quot;</span>:500,<span class="hljs-string">&quot;error&quot;</span>:<span class="hljs-string">&quot;Internal Server Error&quot;</span>,<span class="hljs-string">&quot;exception&quot;</span>:<span class="hljs-string">&quot;org.springframework.web.client.HttpServerErrorException&quot;</span>,<span class="hljs-string">&quot;message&quot;</span>:<span class="hljs-string">&quot;500 null&quot;</span>,<span class="hljs-string">&quot;path&quot;</span>:<span class="hljs-string">&quot;/testGlobalTransaction/1/2/1&quot;</span>}
 </code></pre>
 </li>
-<li><p>&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5E93;&#x67E5;&#x770B;&#x8D26;&#x6237;&#x4F59;&#x989D;</p>
+<li><p>&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5E93;&#x67E5;&#x770B;&#x8D26;&#x6237;&#x4F59;&#x989D;  </p>
 <pre><code class="lang-bash"> $ docker <span class="hljs-built_in">exec</span> -it backend-mysql bash
  <span class="hljs-comment"># mysql -uroot -p123456</span>
  mysql&gt; select * from db1.txle_sample_transfer;
@@ -813,7 +813,7 @@ mvn clean package -DskipTests
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.1 Spring Boot示例工程","level":"1.9.1","depth":2,"next":{"title":"7.2 Spring Cloud示例工程","level":"1.9.2","depth":2,"path":"7.Examples/7.2_example_spring_cloud.md","ref":"7.Examples/7.2_example_spring_cloud.md","articles":[]},"previous":{"title":"7.示例工程","level":"1.9","depth":1,"path":"7.Examples/7.0_overview.md","ref":"7.Examples/7.0_overview.md","articles":[{"title":"7.1 Spring Boot示例工程","level":"1.9.1","depth":2,"path":"7.Examples/7.1_example_spring_boot.md","ref":"7.Examples/7.1_example_spring_boot.md","articles":[]},{"title":"7.2 Spring Cloud示例工程","level":"1.9.2","depth":2,"path":"7.Examples/7.2_example_spring_cloud.md","ref":"7.Examples/7.2_example_spring_cloud.md","articles":[]},{"title":"7.3 Dubbo示例工程","level":"1.9.3","depth":2,"path":"7.Examples/7.3_example_dubbo.md","ref":"7.Examples/7.3_example_dubbo.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters"],"styles":{"website":"website.css"},"pluginsConfig":{"fontsettings":{"theme":"sepia","family":"sans","size":2},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"ActionTech","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"txle manual","gitbook":"*"},"file":{"path":"7.Examples/7.1_example_spring_boot.md","mtime":"2019-10-16T09:12:26.835Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-16T09:57:42.401Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.1 Spring Boot示例工程","level":"1.9.1","depth":2,"next":{"title":"7.2 Spring Cloud示例工程","level":"1.9.2","depth":2,"path":"7.Examples/7.2_example_spring_cloud.md","ref":"7.Examples/7.2_example_spring_cloud.md","articles":[]},"previous":{"title":"7.示例工程","level":"1.9","depth":1,"path":"7.Examples/7.0_overview.md","ref":"7.Examples/7.0_overview.md","articles":[{"title":"7.1 Spring Boot示例工程","level":"1.9.1","depth":2,"path":"7.Examples/7.1_example_spring_boot.md","ref":"7.Examples/7.1_example_spring_boot.md","articles":[]},{"title":"7.2 Spring Cloud示例工程","level":"1.9.2","depth":2,"path":"7.Examples/7.2_example_spring_cloud.md","ref":"7.Examples/7.2_example_spring_cloud.md","articles":[]},{"title":"7.3 Dubbo示例工程","level":"1.9.3","depth":2,"path":"7.Examples/7.3_example_dubbo.md","ref":"7.Examples/7.3_example_dubbo.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters"],"styles":{"website":"website.css"},"pluginsConfig":{"fontsettings":{"theme":"sepia","family":"sans","size":2},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"ActionTech","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"txle manual","gitbook":"*"},"file":{"path":"7.Examples/7.1_example_spring_boot.md","mtime":"2019-10-17T05:31:28.802Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-17T05:34:51.904Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
