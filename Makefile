@@ -1,12 +1,12 @@
-default: pull_code gitbook_build publish gitbook_pdf
+default: gitbook_build publish
+default_with_pdf: default gitbook_pdf
 publish: publish_prepare publish_push
 
 gitbook_preview:
 	docker run --rm -v "${PWD}":/gitbook -p 4000:4000 billryan/gitbook:zh-hans gitbook serve
 gitbook_build:
 	docker run --rm -v "${PWD}":/gitbook -p 4000:4000 billryan/gitbook:zh-hans  /bin/bash -c "gitbook install && gitbook build"
-pull_code:
-	git pull origin master --rebase
+
 gitbook_pdf:
 	docker run --rm -v "${PWD}":/gitbook -p 4000:4000 billryan/gitbook:zh-hans gitbook pdf ./ ./txle-manual.pdf
 	git add .
