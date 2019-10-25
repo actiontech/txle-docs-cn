@@ -36,4 +36,5 @@
     * [7.1 Spring Boot示例工程](7.Examples/7.1_example_spring_boot.md)
     * [7.2 Spring Cloud示例工程](7.Examples/7.2_example_spring_cloud.md)
     * [7.3 Dubbo示例工程](7.Examples/7.3_example_dubbo.md)
-
+* [8.测试](8.Testing/8.0_overview.md)
+    * [8.1 性能测试](8.Testing/8.1_performance_test.md)
