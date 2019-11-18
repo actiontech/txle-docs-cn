@@ -19,6 +19,7 @@
         * [3.2.2 事务关联](3.CoreFunctions/3.2_client_function/3.2.2_global_tx_relation.md)
         * [3.2.3 事件上报](3.CoreFunctions/3.2_client_function/3.2.3_report_event.md)
         * [3.2.4 负载均衡](3.CoreFunctions/3.2_client_function/3.2.4_load_balance.md)
+        * [3.2.5 补偿重试](3.CoreFunctions/3.2_client_function/3.2.5_compensable_retry.md)
     * [3.3 事务支持功能](3.CoreFunctions/3.3_global_tx/3.3.0_overview.md)
         * [3.3.1 手动补偿](3.CoreFunctions/3.3_global_tx/3.3.1_compensation.md)
         * [3.3.2 自动补偿](3.CoreFunctions/3.3_global_tx/3.3.2_auto_compensation.md)
