@@ -15,6 +15,7 @@
         * [3.1.4 异常上报](3.CoreFunctions/3.1_server_function/3.1.4_report_exception.md)
         * [3.1.5 消息上报](3.CoreFunctions/3.1_server_function/3.1.5_report_msg.md)
         * [3.1.6 注册中心](3.CoreFunctions/3.1_server_function/3.1.6_registration_center.md)
+        * [3.1.7 GRPC接口集成](3.CoreFunctions/3.1_server_function/3.1.7_grpc_interface_integration.md)
     * [3.2 客户端功能](3.CoreFunctions/3.2_client_function/3.2.0_overview.md)
         * [3.2.1 业务拦截](3.CoreFunctions/3.2_client_function/3.2.1_biz_interceptor.md)
         * [3.2.2 事务关联](3.CoreFunctions/3.2_client_function/3.2.2_global_tx_relation.md)
